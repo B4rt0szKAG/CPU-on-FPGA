@@ -1,0 +1,9 @@
+module communication (
+	input sw0,
+	output led0,
+	output led1
+);
+	led0 = sw0;
+	led1 = !sw0;
+
+endmodule
