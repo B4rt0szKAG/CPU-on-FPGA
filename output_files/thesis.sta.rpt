@@ -1,5 +1,5 @@
 Timing Analyzer report for thesis
-Thu Apr 16 13:45:09 2026
+Thu Apr 16 16:52:40 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -40,11 +40,12 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
  32. Report TCCS
  33. Report RSKM
  34. Unconstrained Paths Summary
- 35. Unconstrained Input Ports
- 36. Unconstrained Output Ports
- 37. Unconstrained Input Ports
- 38. Unconstrained Output Ports
- 39. Timing Analyzer Messages
+ 35. Clock Status Summary
+ 36. Unconstrained Input Ports
+ 37. Unconstrained Output Ports
+ 38. Unconstrained Input Ports
+ 39. Unconstrained Output Ports
+ 40. Timing Analyzer Messages
 
 
 
@@ -95,14 +96,17 @@ on the Quartus Prime software download page.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.3%      ;
+;     Processors 2-4         ;   0.4%      ;
 +----------------------------+-------------+
 
 
-----------
-; Clocks ;
-----------
-No clocks to report.
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                          ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
 
 
 --------------------------------------
@@ -135,10 +139,13 @@ No paths to report.
 No paths to report.
 
 
------------------------------------------------------
++---------------------------------------------------+
 ; Slow 1200mV 85C Model Minimum Pulse Width Summary ;
------------------------------------------------------
-No paths to report.
++-------+--------+----------------------------------+
+; Clock ; Slack  ; End Point TNS                    ;
++-------+--------+----------------------------------+
+; clk   ; -3.000 ; -4.403                           ;
++-------+--------+----------------------------------+
 
 
 -----------------------------------------------
@@ -177,10 +184,13 @@ No paths to report.
 No paths to report.
 
 
-----------------------------------------------------
++--------------------------------------------------+
 ; Slow 1200mV 0C Model Minimum Pulse Width Summary ;
-----------------------------------------------------
-No paths to report.
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; clk   ; -3.000 ; -4.403                          ;
++-------+--------+---------------------------------+
 
 
 ----------------------------------------------
@@ -213,10 +223,13 @@ No paths to report.
 No paths to report.
 
 
-----------------------------------------------------
++--------------------------------------------------+
 ; Fast 1200mV 0C Model Minimum Pulse Width Summary ;
-----------------------------------------------------
-No paths to report.
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; clk   ; -3.000 ; -4.075                          ;
++-------+--------+---------------------------------+
 
 
 ----------------------------------------------
@@ -230,8 +243,10 @@ No synchronizer chains to report.
 +------------------+-------+------+----------+---------+---------------------+
 ; Clock            ; Setup ; Hold ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------+-------+------+----------+---------+---------------------+
-; Worst-case Slack ; N/A   ; N/A  ; N/A      ; N/A     ; N/A                 ;
-; Design-wide TNS  ; 0.0   ; 0.0  ; 0.0      ; 0.0     ; 0.0                 ;
+; Worst-case Slack ; N/A   ; N/A  ; N/A      ; N/A     ; -3.000              ;
+;  clk             ; N/A   ; N/A  ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS  ; 0.0   ; 0.0  ; 0.0      ; 0.0     ; -4.403              ;
+;  clk             ; N/A   ; N/A  ; N/A      ; N/A     ; -4.403              ;
 +------------------+-------+------+----------+---------+---------------------+
 
 
@@ -252,6 +267,8 @@ No synchronizer chains to report.
 ; Pin                 ; I/O Standard          ; 10-90 Rise Time ; 90-10 Fall Time ;
 +---------------------+-----------------------+-----------------+-----------------+
 ; sw0                 ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; rxd                 ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; clk                 ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
 ; ~ALTERA_TMS~        ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
 ; ~ALTERA_TCK~        ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
 ; ~ALTERA_TDI~        ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
@@ -320,11 +337,20 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 1     ; 1    ;
+; Unconstrained Input Ports       ; 2     ; 2    ;
 ; Unconstrained Input Port Paths  ; 2     ; 2    ;
 ; Unconstrained Output Ports      ; 2     ; 2    ;
 ; Unconstrained Output Port Paths ; 2     ; 2    ;
 +---------------------------------+-------+------+
+
+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; clk    ; clk   ; Base ; Constrained ;
++--------+-------+------+-------------+
 
 
 +---------------------------------------------------------------------------------------------------+
@@ -332,6 +358,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +------------+--------------------------------------------------------------------------------------+
 ; Input Port ; Comment                                                                              ;
 +------------+--------------------------------------------------------------------------------------+
+; rxd        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; sw0        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
@@ -351,6 +378,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +------------+--------------------------------------------------------------------------------------+
 ; Input Port ; Comment                                                                              ;
 +------------+--------------------------------------------------------------------------------------+
+; rxd        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; sw0        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
@@ -371,7 +399,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Thu Apr 16 13:45:05 2026
+    Info: Processing started: Thu Apr 16 16:52:38 2026
 Info: Command: quartus_sta thesis -c thesis
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -380,12 +408,11 @@ Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'thesis.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk clk
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
-Info (332159): No clocks to report
 Info: Analyzing Slow 1200mV 85C Model
 Info (332140): No fmax paths to report
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
@@ -393,36 +420,42 @@ Info (332140): No Setup paths to report
 Info (332140): No Hold paths to report
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000              -4.403 clk 
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
 Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
 Info (332140): No fmax paths to report
 Info (332140): No Setup paths to report
 Info (332140): No Hold paths to report
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000              -4.403 clk 
 Info: Analyzing Fast 1200mV 0C Model
-Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
-Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
-Warning (332068): No clocks defined in design.
 Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
 Info (332140): No Setup paths to report
 Info (332140): No Hold paths to report
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332140): No Minimum Pulse Width paths to report
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000              -4.075 clk 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 510 megabytes
-    Info: Processing ended: Thu Apr 16 13:45:09 2026
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Peak virtual memory: 527 megabytes
+    Info: Processing ended: Thu Apr 16 16:52:40 2026
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 

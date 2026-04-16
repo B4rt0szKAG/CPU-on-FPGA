@@ -1,5 +1,5 @@
 Analysis & Synthesis report for thesis
-Thu Apr 16 13:44:49 2026
+Thu Apr 16 16:52:23 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -43,16 +43,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Apr 16 13:44:49 2026           ;
+; Analysis & Synthesis Status        ; Successful - Thu Apr 16 16:52:23 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; thesis                                          ;
 ; Top-level Entity Name              ; thesis                                          ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 0                                               ;
+; Total logic elements               ; 1                                               ;
 ;     Total combinational functions  ; 0                                               ;
-;     Dedicated logic registers      ; 0                                               ;
-; Total registers                    ; 0                                               ;
-; Total pins                         ; 3                                               ;
+;     Dedicated logic registers      ; 1                                               ;
+; Total registers                    ; 1                                               ;
+; Total pins                         ; 5                                               ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -173,44 +173,46 @@ on the Quartus Prime software download page.
 +----------------------------------+-----------------+------------------------+------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-;                                             ;           ;
-; Total combinational functions               ; 0         ;
-; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 0         ;
-;     -- 3 input functions                    ; 0         ;
-;     -- <=2 input functions                  ; 0         ;
-;                                             ;           ;
-; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 0         ;
-;     -- arithmetic mode                      ; 0         ;
-;                                             ;           ;
-; Total registers                             ; 0         ;
-;     -- Dedicated logic registers            ; 0         ;
-;     -- I/O registers                        ; 0         ;
-;                                             ;           ;
-; I/O pins                                    ; 3         ;
-;                                             ;           ;
-; Embedded Multiplier 9-bit elements          ; 0         ;
-;                                             ;           ;
-; Maximum fan-out node                        ; sw0~input ;
-; Maximum fan-out                             ; 2         ;
-; Total fan-out                               ; 5         ;
-; Average fan-out                             ; 0.83      ;
-+---------------------------------------------+-----------+
++--------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                        ;
++---------------------------------------------+----------------------+
+; Resource                                    ; Usage                ;
++---------------------------------------------+----------------------+
+; Estimated Total logic elements              ; 1                    ;
+;                                             ;                      ;
+; Total combinational functions               ; 0                    ;
+; Logic element usage by number of LUT inputs ;                      ;
+;     -- 4 input functions                    ; 0                    ;
+;     -- 3 input functions                    ; 0                    ;
+;     -- <=2 input functions                  ; 0                    ;
+;                                             ;                      ;
+; Logic elements by mode                      ;                      ;
+;     -- normal mode                          ; 0                    ;
+;     -- arithmetic mode                      ; 0                    ;
+;                                             ;                      ;
+; Total registers                             ; 1                    ;
+;     -- Dedicated logic registers            ; 1                    ;
+;     -- I/O registers                        ; 0                    ;
+;                                             ;                      ;
+; I/O pins                                    ; 5                    ;
+;                                             ;                      ;
+; Embedded Multiplier 9-bit elements          ; 0                    ;
+;                                             ;                      ;
+; Maximum fan-out node                        ; uart_rxd:reciver|out ;
+; Maximum fan-out                             ; 1                    ;
+; Total fan-out                               ; 9                    ;
+; Average fan-out                             ; 0.82                 ;
++---------------------------------------------+----------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; |thesis                    ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 3    ; 0            ; 0          ; |thesis             ; thesis      ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                     ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name      ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------+-------------+--------------+
+; |thesis                    ; 0 (0)               ; 1 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 5    ; 0            ; 0          ; |thesis                  ; thesis      ; work         ;
+;    |uart_rxd:reciver|      ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |thesis|uart_rxd:reciver ; uart_rxd    ; work         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -219,7 +221,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 1     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -231,17 +233,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; boundary_port         ; 3                           ;
-; cycloneiii_lcell_comb ; 1                           ;
-;     normal            ; 1                           ;
-;         1 data inputs ; 1                           ;
-;                       ;                             ;
-; Max LUT depth         ; 1.00                        ;
-; Average LUT depth     ; 1.00                        ;
-+-----------------------+-----------------------------+
++-------------------+---------------------------------+
+; Type              ; Count                           ;
++-------------------+---------------------------------+
+; boundary_port     ; 5                               ;
+; cycloneiii_ff     ; 1                               ;
+;     plain         ; 1                               ;
+;                   ;                                 ;
+; Max LUT depth     ; 0.00                            ;
+; Average LUT depth ; 0.00                            ;
++-------------------+---------------------------------+
 
 
 +-------------------------------+
@@ -259,22 +260,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Thu Apr 16 13:44:41 2026
+    Info: Processing started: Thu Apr 16 16:52:14 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off thesis -c thesis
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file thesis.v
+Info (12021): Found 2 design units, including 2 entities, in source file thesis.v
     Info (12023): Found entity 1: thesis File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 1
+    Info (12023): Found entity 2: uart_rxd File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 19
 Info (12127): Elaborating entity "thesis" for the top level hierarchy
+Info (12128): Elaborating entity "uart_rxd" for hierarchy "uart_rxd:reciver" File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 13
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 3 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
+Info (21057): Implemented 6 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
     Info (21059): Implemented 2 output pins
+    Info (21061): Implemented 1 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 355 megabytes
-    Info: Processing ended: Thu Apr 16 13:44:49 2026
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Peak virtual memory: 386 megabytes
+    Info: Processing ended: Thu Apr 16 16:52:23 2026
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:24
 
 
