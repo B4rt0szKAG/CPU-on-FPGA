@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Thu Apr 16 16:52:23 2026
+Analysis & Synthesis Status : Successful - Sun Apr 19 21:02:42 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : thesis
 Top-level Entity Name : thesis
 Family : MAX 10
-Total logic elements : 1
-    Total combinational functions : 0
-    Dedicated logic registers : 1
-Total registers : 1
-Total pins : 5
+Total logic elements : 54
+    Total combinational functions : 54
+    Dedicated logic registers : 28
+Total registers : 28
+Total pins : 12
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

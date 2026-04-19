@@ -1,5 +1,5 @@
 Analysis & Synthesis report for thesis
-Thu Apr 16 16:52:23 2026
+Sun Apr 19 21:02:42 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -13,10 +13,14 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Post-Synthesis Netlist Statistics for Top Partition
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  8. State Machine - |thesis|uart_rxd:reciver|state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
+ 15. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -43,16 +47,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Apr 16 16:52:23 2026           ;
+; Analysis & Synthesis Status        ; Successful - Sun Apr 19 21:02:42 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; thesis                                          ;
 ; Top-level Entity Name              ; thesis                                          ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 1                                               ;
-;     Total combinational functions  ; 0                                               ;
-;     Dedicated logic registers      ; 1                                               ;
-; Total registers                    ; 1                                               ;
-; Total pins                         ; 5                                               ;
+; Total logic elements               ; 54                                              ;
+;     Total combinational functions  ; 54                                              ;
+;     Dedicated logic registers      ; 28                                              ;
+; Total registers                    ; 28                                              ;
+; Total pins                         ; 12                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -157,10 +161,11 @@ on the Quartus Prime software download page.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -173,36 +178,36 @@ on the Quartus Prime software download page.
 +----------------------------------+-----------------+------------------------+------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                        ;
-+---------------------------------------------+----------------------+
-; Resource                                    ; Usage                ;
-+---------------------------------------------+----------------------+
-; Estimated Total logic elements              ; 1                    ;
-;                                             ;                      ;
-; Total combinational functions               ; 0                    ;
-; Logic element usage by number of LUT inputs ;                      ;
-;     -- 4 input functions                    ; 0                    ;
-;     -- 3 input functions                    ; 0                    ;
-;     -- <=2 input functions                  ; 0                    ;
-;                                             ;                      ;
-; Logic elements by mode                      ;                      ;
-;     -- normal mode                          ; 0                    ;
-;     -- arithmetic mode                      ; 0                    ;
-;                                             ;                      ;
-; Total registers                             ; 1                    ;
-;     -- Dedicated logic registers            ; 1                    ;
-;     -- I/O registers                        ; 0                    ;
-;                                             ;                      ;
-; I/O pins                                    ; 5                    ;
-;                                             ;                      ;
-; Embedded Multiplier 9-bit elements          ; 0                    ;
-;                                             ;                      ;
-; Maximum fan-out node                        ; uart_rxd:reciver|out ;
-; Maximum fan-out                             ; 1                    ;
-; Total fan-out                               ; 9                    ;
-; Average fan-out                             ; 0.82                 ;
-+---------------------------------------------+----------------------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 54        ;
+;                                             ;           ;
+; Total combinational functions               ; 54        ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 21        ;
+;     -- 3 input functions                    ; 16        ;
+;     -- <=2 input functions                  ; 17        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 42        ;
+;     -- arithmetic mode                      ; 12        ;
+;                                             ;           ;
+; Total registers                             ; 28        ;
+;     -- Dedicated logic registers            ; 28        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 12        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 28        ;
+; Total fan-out                               ; 270       ;
+; Average fan-out                             ; 2.55      ;
++---------------------------------------------+-----------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -210,10 +215,34 @@ on the Quartus Prime software download page.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name      ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------+-------------+--------------+
-; |thesis                    ; 0 (0)               ; 1 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 5    ; 0            ; 0          ; |thesis                  ; thesis      ; work         ;
-;    |uart_rxd:reciver|      ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |thesis|uart_rxd:reciver ; uart_rxd    ; work         ;
+; |thesis                    ; 54 (0)              ; 28 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 12   ; 0            ; 0          ; |thesis                  ; thesis      ; work         ;
+;    |uart_rxd:reciver|      ; 54 (54)             ; 28 (28)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |thesis|uart_rxd:reciver ; uart_rxd    ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------+
+; State Machine - |thesis|uart_rxd:reciver|state                       ;
++---------------+-----------+---------------+-------------+------------+
+; Name          ; state.END ; state.RECEIVE ; state.START ; state.WAIT ;
++---------------+-----------+---------------+-------------+------------+
+; state.WAIT    ; 0         ; 0             ; 0           ; 0          ;
+; state.START   ; 0         ; 0             ; 1           ; 1          ;
+; state.RECEIVE ; 0         ; 1             ; 0           ; 1          ;
+; state.END     ; 1         ; 0             ; 0           ; 1          ;
++---------------+-----------+---------------+-------------+------------+
+
+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; uart_rxd:reciver|state~6              ; Lost fanout        ;
+; uart_rxd:reciver|state~7              ; Lost fanout        ;
+; Total Number of Removed Registers = 2 ;                    ;
++---------------------------------------+--------------------+
 
 
 +------------------------------------------------------+
@@ -221,28 +250,51 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1     ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 28    ;
+; Number of registers using Synchronous Clear  ; 13    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 16    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |thesis|uart_rxd:reciver|message_idx[2] ;
+; 7:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |thesis|uart_rxd:reciver|cnt[6]         ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |thesis|uart_rxd:reciver|Selector3      ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |thesis|uart_rxd:reciver|Selector0      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
-+-------------------+---------------------------------+
-; Type              ; Count                           ;
-+-------------------+---------------------------------+
-; boundary_port     ; 5                               ;
-; cycloneiii_ff     ; 1                               ;
-;     plain         ; 1                               ;
-;                   ;                                 ;
-; Max LUT depth     ; 0.00                            ;
-; Average LUT depth ; 0.00                            ;
-+-------------------+---------------------------------+
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 12                          ;
+; cycloneiii_ff         ; 28                          ;
+;     ENA               ; 3                           ;
+;     ENA SCLR          ; 13                          ;
+;     plain             ; 12                          ;
+; cycloneiii_lcell_comb ; 55                          ;
+;     arith             ; 12                          ;
+;         2 data inputs ; 12                          ;
+;     normal            ; 43                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 4                           ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 21                          ;
+;                       ;                             ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.70                        ;
++-----------------------+-----------------------------+
 
 
 +-------------------------------+
@@ -260,26 +312,44 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Thu Apr 16 16:52:14 2026
+    Info: Processing started: Sun Apr 19 21:02:34 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off thesis -c thesis
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 2 design units, including 2 entities, in source file thesis.v
+Info (12021): Found 3 design units, including 3 entities, in source file thesis.v
     Info (12023): Found entity 1: thesis File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 1
-    Info (12023): Found entity 2: uart_rxd File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 19
+    Info (12023): Found entity 2: uart_rxd File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 17
+    Info (12023): Found entity 3: uart_txd File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 82
 Info (12127): Elaborating entity "thesis" for the top level hierarchy
+Warning (10034): Output port "txd" at thesis.v(5) has no driver File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 5
 Info (12128): Elaborating entity "uart_rxd" for hierarchy "uart_rxd:reciver" File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 13
+Warning (10230): Verilog HDL assignment warning at thesis.v(54): truncated value with size 32 to match size of target (13) File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 54
+Warning (10230): Verilog HDL assignment warning at thesis.v(64): truncated value with size 32 to match size of target (3) File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 64
+Warning (10230): Verilog HDL assignment warning at thesis.v(67): truncated value with size 32 to match size of target (13) File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 67
+Warning (10230): Verilog HDL assignment warning at thesis.v(74): truncated value with size 32 to match size of target (13) File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 74
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "txd" is stuck at GND File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 5
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/output_files/thesis.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 6 device resources after synthesis - the final resource count might be different
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "sw0" File: /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/thesis.v Line: 3
+Info (21057): Implemented 66 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 2 output pins
-    Info (21061): Implemented 1 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 386 megabytes
-    Info: Processing ended: Thu Apr 16 16:52:23 2026
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:24
+    Info (21059): Implemented 9 output pins
+    Info (21061): Implemented 54 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 398 megabytes
+    Info: Processing ended: Sun Apr 19 21:02:42 2026
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:22
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/jdo3/Desktop/studia/inżynierka/CPU-on-FPGA/output_files/thesis.map.smsg.
 
 

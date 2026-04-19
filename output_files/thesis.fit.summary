@@ -1,15 +1,15 @@
-Fitter Status : Successful - Thu Apr 16 16:52:32 2026
+Fitter Status : Successful - Sun Apr 19 21:02:51 2026
 Quartus Prime Version : 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 Revision Name : thesis
 Top-level Entity Name : thesis
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 2 / 49,760 ( < 1 % )
-    Total combinational functions : 1 / 49,760 ( < 1 % )
-    Dedicated logic registers : 1 / 49,760 ( < 1 % )
-Total registers : 1
-Total pins : 5 / 360 ( 1 % )
+Total logic elements : 55 / 49,760 ( < 1 % )
+    Total combinational functions : 55 / 49,760 ( < 1 % )
+    Dedicated logic registers : 28 / 49,760 ( < 1 % )
+Total registers : 28
+Total pins : 12 / 360 ( 3 % )
 Total virtual pins : 0
 Total memory bits : 0 / 1,677,312 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )

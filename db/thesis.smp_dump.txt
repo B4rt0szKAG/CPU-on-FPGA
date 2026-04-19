@@ -1,0 +1,7 @@
+
+State Machine - |thesis|uart_rxd:reciver|state
+Name state.END state.RECEIVE state.START state.WAIT 
+state.WAIT 0 0 0 0 
+state.START 0 0 1 1 
+state.RECEIVE 0 1 0 1 
+state.END 1 0 0 1 
